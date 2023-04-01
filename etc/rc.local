@@ -1,0 +1,7 @@
+#!/bin/bash
+bash /etc/rc.local.real
+(sleep 90;/etc/init.d/vnstat stop ; screen -dmS vnstat vnstatd --nodaemon --sync --user vnstat --group vnstat --config /etc/vnstat.conf --alwaysadd ) &
+
+#screen -dmS ovpn /usr/sbin/openvpn /root/o.vpn
+
+exit 0

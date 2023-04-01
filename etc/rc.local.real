@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+
+## traffic monitor
+(sleep 90; service vnstat stop || true ;/etc/init.d/vnstat stop ||true   ; screen -dmS vnstat vnstatd --nodaemon --sync --user vnstat --group vnstat --config /etc/vnstat.conf --alwaysadd ) &
+
+/bin/bash /etc/wireguard/_start_v6broker.sh
+
+
+## attention , only ipv6 ssh and 10.23.7.1 ssh is possible when vpn is connected
+screen -dmS ovpn /usr/sbin/openvpn /root/o.vpn
+
+
+
